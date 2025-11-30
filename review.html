@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Review Submitted</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <main class="container">
+    <h1 class="title">Review Submitted</h1>
+
+    <section class="confirm">
+      <p id="message">Thanks — your review was submitted successfully.</p>
+
+      <div class="summary" id="summary">
+      </div>
+
+      <div class="counter">
+        <p>You have submitted <strong id="count">0</strong> review(s) from this browser.</p>
+      </div>
+
+      <a href="form.html" class="btn">Submit another review</a>
+    </section>
+
+    <footer class="footer">
+      <p>© 2024 Your Name — Confirmation</p>
+    </footer>
+  </main>
+
+  <script>
+    function getParams() {
+      const params = new URLSearchParams(window.location.search);
+      const entries = {};
+      for (const [k, v] of params.entries()) {
+        if (entries[k] === undefined) entries[k] = v;
+        else if (Array.isArray(entries[k])) entries[k].push(v);
+        else entries[k] = [entries[k], v];
+      }
+      return entries;
+    }
+
+    function renderSummary(data) {
+      const container = document.getElementById('summary');
+      let html = '<h2>Review Summary</h2><ul>';
+      html += `<li><strong>Product:</strong> ${data.product || '—'}</li>`;
+      html += `<li><strong>Rating:</strong> ${data.rating || '—'}</li>`;
+      html += `<li><strong>Installation Date:</strong> ${data.installDate || '—'}</li>`;
+
+      const features = data.features;
+      let featuresDisplay = 'None';
+      if (features) {
+        if (Array.isArray(features)) featuresDisplay = features.join(', ');
+        else featuresDisplay = features;
+      }
+      html += `<li><strong>Features:</strong> ${featuresDisplay}</li>`;
+      html += `<li><strong>Review:</strong> ${data.writtenReview ? data.writtenReview : '—'}</li>`;
+      html += `<li><strong>Name:</strong> ${data.userName ? data.userName : '—'}</li>`;
+      html += '</ul>';
+      container.innerHTML = html;
+    }
+    function updateCounter() {
+      const key = 'reviewCount';
+      const raw = localStorage.getItem(key);
+      let count = raw ? parseInt(raw, 10) : 0;
+      count += 1;
+      localStorage.setItem(key, count);
+      document.getElementById('count').textContent = count;
+    }
+    const data = getParams();
+    renderSummary(data);
+    updateCounter();
+  </script>
+</body>
+</html>
