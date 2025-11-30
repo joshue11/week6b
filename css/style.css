@@ -1,0 +1,128 @@
+:root{
+  --primary:#4a2b58;   
+  --accent:#ffb86b;   
+  --muted:#eef4f6;
+  --text:#222;
+  --card:#fff;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  color:var(--text);
+  background:var(--muted);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+.container{
+  max-width:980px;
+  margin:28px auto;
+  padding:20px;
+  background:transparent;
+}
+
+.title{
+  color:var(--primary);
+  font-size:2rem;
+  margin:0 0 18px 0;
+}
+
+.review-form{
+  background:var(--card);
+  padding:18px;
+  border-radius:8px;
+  box-shadow:0 4px 14px rgba(0,0,0,0.06);
+}
+
+.form-row{
+  margin-bottom:14px;
+}
+
+.label{
+  display:block;
+  font-weight:600;
+  margin-bottom:6px;
+}
+
+.required-label::after{
+  content: " *";
+  color: #c0392b;
+  font-weight:700;
+  margin-left:3px;
+}
+
+input[type="text"],
+input[type="date"],
+select,
+textarea{
+  width:100%;
+  padding:10px 12px;
+  border-radius:6px;
+  border:1px solid #ddd;
+  font-size:1rem;
+  background: #fff;
+}
+
+textarea{
+  resize:vertical;
+}
+
+.rating-group{
+  display:flex;
+  gap:8px;
+  align-items:center;
+}
+
+.rating-group input[type="radio"]{display:none}
+.rating-group label{
+  cursor:pointer;
+  padding:6px 8px;
+  border-radius:6px;
+  background:#fafafa;
+  border:1px solid #eee;
+  font-size:0.95rem;
+}
+
+.rating-group input[type="radio"]:checked + label{
+  background: linear-gradient(90deg,var(--accent), var(--primary));
+  color:white;
+  border-color:var(--primary);
+}
+
+.checkbox-grid{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0,1fr));
+  gap:8px;
+}
+
+.checkbox-grid input{margin-right:8px}
+
+.btn{
+  display:inline-block;
+  background:var(--primary);
+  color:white;
+  border:none;
+  padding:10px 14px;
+  border-radius:8px;
+  font-weight:700;
+  cursor:pointer;
+  text-decoration:none;
+}
+
+.btn:hover{opacity:0.95}
+
+.footer{
+  margin-top:16px;
+  font-size:0.9rem;
+  color:#666;
+}
+
+.confirm{ background:var(--card); padding:18px; border-radius:8px; box-shadow:0 4px 14px rgba(0,0,0,0.06); }
+.summary ul{ list-style:none; padding:0; }
+.summary li{ padding:6px 0; border-bottom:1px dashed #eee; }
+@media (min-width:900px){
+  .container{ padding:28px; }
+  .review-form{ padding:26px; }
+}
