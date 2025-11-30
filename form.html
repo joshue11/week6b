@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Product Review</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <main class="container">
+    <h1 class="title">Product Review</h1>
+
+    <form id="reviewForm" class="review-form" method="get" action="review.html" novalidate>
+      <div class="form-row">
+        <label for="product" class="label required-label">Product Name</label>
+        <select id="product" name="product" required>
+          <option disabled selected>Select a Product ...</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <span class="label required-label">Overall Rating</span>
+        <div class="rating-group" role="radiogroup" aria-labelledby="rating-label">
+          <input type="radio" id="star5" name="rating" value="5" required>
+          <label for="star5" title="5 stars">★★★★★</label>
+
+          <input type="radio" id="star4" name="rating" value="4">
+          <label for="star4" title="4 stars">★★★★☆</label>
+
+          <input type="radio" id="star3" name="rating" value="3">
+          <label for="star3" title="3 stars">★★★☆☆</label>
+
+          <input type="radio" id="star2" name="rating" value="2">
+          <label for="star2" title="2 stars">★★☆☆☆</label>
+
+          <input type="radio" id="star1" name="rating" value="1">
+          <label for="star1" title="1 star">★☆☆☆☆</label>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label for="installDate" class="label required-label">Date of Installation</label>
+        <input type="date" id="installDate" name="installDate" required>
+      </div>
+      <div class="form-row">
+        <span class="label">Which features did you find useful? <small>(check all that apply)</small></span>
+
+        <div class="checkbox-grid">
+          <div><input type="checkbox" id="featDurability" name="features" value="Durability">
+            <label for="featDurability">Durability</label></div>
+
+          <div><input type="checkbox" id="featEase" name="features" value="Ease of Use">
+            <label for="featEase">Ease of Use</label></div>
+
+          <div><input type="checkbox" id="featPerf" name="features" value="Performance">
+            <label for="featPerf">Performance</label></div>
+
+          <div><input type="checkbox" id="featDesign" name="features" value="Design">
+            <label for="featDesign">Design</label></div>
+        </div>
+      </div>
+      <div class="form-row">
+        <label for="writtenReview" class="label">Written Review <small>(optional)</small></label>
+        <textarea id="writtenReview" name="writtenReview" rows="6" placeholder="Write your review..."></textarea>
+      </div>
+
+      <div class="form-row">
+        <label for="userName" class="label">Your Name <small>(optional)</small></label>
+        <input type="text" id="userName" name="userName" placeholder="Your name">
+      </div>
+
+      <div class="form-row">
+        <input type="submit" class="btn" value="Post Review">
+      </div>
+
+    </form>
+
+    <footer class="footer">
+      <p>© 2024 Your Name — Product Review Form</p>
+    </footer>
+  </main>
+
+  <script src="js/products.js"></script>
+  <script src="js/form.js"></script>
+</body>
+</html>
